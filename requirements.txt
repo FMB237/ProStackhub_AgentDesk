@@ -13,3 +13,4 @@ beautifulsoup4              # HTML parsing of search results
 
 # Let add httpx directly to handle multiple search requests using aysnc functions
 httpx
+httpx2

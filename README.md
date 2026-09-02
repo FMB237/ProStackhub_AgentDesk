@@ -102,5 +102,3 @@ Response:
 - Docker, Docker Compose
 - Vanilla HTML/CSS/JS
 
-## License
-MIT
