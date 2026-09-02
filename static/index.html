@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentDesk – Autonomous Research</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AgentDesk</h1>
+        <p class="subtitle">Autonomous research agent powered by DuckDuckGo + Gemini</p>
+        
+        <div class="card">
+            <label for="goal">Research Goal</label>
+            <textarea id="goal" rows="3" placeholder="e.g., compare the top 3 cloud providers for AI workloads"></textarea>
+            <button id="researchBtn">Research</button>
+            <div id="status"></div>
+        </div>
+
+        <div class="results" id="results" hidden>
+            <h2>Report</h2>
+            <pre id="report"></pre>
+            
+            <h3>Step Log</h3>
+            <ul id="log"></ul>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

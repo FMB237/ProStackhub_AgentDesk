@@ -14,6 +14,15 @@ app = FastAPI(
     description="A research‑assistant that can browse, scrape, and summarize across several sources, then output a structured report.",
 )
 
+# Serve static frontend
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def root():
+    return FileResponse("static/index.html")
+
 class ResearchRequest(BaseModel):
     goal: str
 
