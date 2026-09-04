@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Prostackhub_AgentDesk
     steps:
       - uses: actions/checkout@v4
 
@@ -32,6 +35,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     needs: test
+    defaults:
+      run:
+        working-directory: Prostackhub_AgentDesk
     steps:
       - uses: actions/checkout@v4
 
