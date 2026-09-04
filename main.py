@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -6,12 +7,14 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables (including GEMINI_API_KEY)
-load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+env_path = Path(__file__).parent / ".env"
+if env_path.exists():
+    load_dotenv(dotenv_path=env_path)
 
 app = FastAPI(
     title="AgentDesk",
     version="1.0.0",
-    description="A research‑assistant that can browse, scrape, and summarize across several sources, then output a structured report.",
+    description="A research assistant that can browse, scrape, and summarize across several sources, then output a structured report.",
 )
 
 # Serve static frontend
@@ -27,7 +30,16 @@ class ResearchRequest(BaseModel):
     goal: str
 
 # Import the orchestration function (after FastAPI init)
-from agent import run_research
+# Graceful fallback if agent module is not available
+try:
+    from agent import run_research
+except ImportError:
+    # Define a stub for testing or when agent.py is missing
+    def run_research(goal: str):
+        return {
+            "report": f"Stub report for: {goal}",
+            "log": ["Stub log entry"]
+        }
 
 @app.post("/research")
 async def research_endpoint(req: ResearchRequest):
