@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Prostackhub_AgentDesk
+        working-directory: ProStackhub_AgentDesk/Prostackhub_AgentDesk
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +37,7 @@ jobs:
     needs: test
     defaults:
       run:
-        working-directory: Prostackhub_AgentDesk
+        working-directory: ProStackhub_AgentDesk/Prostackhub_AgentDesk
     steps:
       - uses: actions/checkout@v4
 
